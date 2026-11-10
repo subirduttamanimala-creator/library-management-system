@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f5f0">
+  <meta name="description" content="Meridian Library — a world of knowledge, one thoughtful discovery at a time.">
+  <title>Meridian Library — Discover more</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="catalog.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="announcement"><span>MERIDIAN LIBRARY · OPEN TO EVERY CURIOUS MIND</span><span>Reader services <b>Mon–Sat, 9:00–20:00</b></span></div>
+  <header class="site-header">
+    <a href="#home" class="brand" aria-label="Meridian Library home"><span class="brand-symbol">M<span>✳</span></span><span class="brand-name">MERIDIAN<small>LIBRARY & READING ROOM</small></span></a>
+    <nav class="main-nav" aria-label="Main navigation"><a href="#collection">Explore the collection</a><a href="#collections">Curated shelves</a><a href="#membership">Membership</a><a href="#about">Our library</a></nav>
+    <div class="header-actions"><button class="text-link" id="accountButton">Reader sign in <span>↗</span></button><button class="button dark-button" id="headerAsk">Ask the librarian <span>✳</span></button><button class="mobile-menu" id="mobileMenu" aria-label="Toggle menu">☰</button></div>
+  </header>
+
+  <main id="home">
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow"><i></i> A LIBRARY WITHOUT BORDERS</div>
+        <h1>Find the book<br>that <em>finds you.</em></h1>
+        <p class="hero-lede">A considered collection for every kind of curiosity. Explore ideas, meet new worlds, and let your next chapter begin here.</p>
+        <div class="hero-search"><span class="search-icon">⌕</span><input id="heroSearch" type="search" placeholder="Search titles, authors, subjects…" autocomplete="off"><button id="heroSearchButton" aria-label="Search collection">→</button></div>
+        <div class="search-hint"><span>TRY</span><button data-query="engineering">Engineering</button><b>·</b><button data-query="science fiction">Science fiction</button><b>·</b><button data-query="history">History</button></div>
+        <div class="hero-proof"><div class="reader-dots"><span>R</span><span>A</span><span>M</span><span>+</span></div><p><b>Made for minds in motion.</b><br>Explore a world of stories and study.</p></div>
+      </div>
+      <div class="hero-art" aria-label="Illustration of an inviting library reading room" role="img">
+        <div class="art-orbit"></div><div class="art-window"><div class="window-sun"></div><div class="window-cross"></div><div class="window-arch"></div></div>
+        <div class="reading-lamp"><i></i><b></b><span></span></div>
+        <div class="art-stack"><span></span><span></span><span></span></div>
+        <div class="art-note"><small>THE JOY OF</small><b>getting lost<br>in a good book</b><i>— a Meridian ritual</i></div>
+        <div class="art-leaf leaf-a">✳</div><div class="art-leaf leaf-b">✳</div>
+      </div>
+      <div class="hero-bottomline"><span>EST. 1924</span><span>A PLACE TO READ, RESEARCH & REIMAGINE</span><span>SCROLL TO DISCOVER ↓</span></div>
+    </section>
+
+    <section class="intro-strip" id="about"><div class="intro-mark">✳</div><p>We believe a great library is a doorway.<br><span>Step through and see where curiosity leads.</span></p><div class="intro-stats"><div><b id="collectionCount">00</b><small>BOOKS TO EXPLORE</small></div><i></i><div><b>08</b><small>THOUGHTFUL COLLECTIONS</small></div></div></section>
+
+    <section class="section collection-section" id="collections">
+      <div class="section-heading"><div><div class="eyebrow"><i></i> FIND YOUR NEXT SHELF</div><h2>Many worlds.<br><em>One library.</em></h2></div><p class="section-intro">Follow a subject, browse at random, or ask our book concierge to help you find exactly what you’re looking for.</p></div>
+      <div class="category-grid" id="categoryGrid"></div>
+    </section>
+
+    <section class="feature-band"><div class="feature-copy"><div class="eyebrow light-eyebrow"><i></i> FOR THE CURIOUS & THE COURAGEOUS</div><h2>Knowledge has<br><em>a home here.</em></h2><p>From foundational engineering texts to the latest ideas in science, our shelves make room for both deep study and delightful detours.</p><button class="button light-button" data-category="Engineering & Computing">Explore engineering <span>→</span></button></div><div class="feature-books" id="featureBooks"></div><div class="feature-caption">SELECTED FROM OUR RESEARCH & TECHNOLOGY SHELVES</div></section>
+
+    <section class="section picks-section"><div class="section-heading compact-heading"><div><div class="eyebrow"><i></i> THE MERIDIAN EDIT</div><h2>Worth staying up for.</h2></div><button class="under-link" data-sort="popular">Browse reader favorites <span>↗</span></button></div><div class="book-rail" id="popularRail"></div></section>
+
+    <section class="catalog-section" id="collection"><div class="section catalog-inner"><div class="catalog-title"><div><div class="eyebrow"><i></i> THE COLLECTION</div><h2>A world at your fingertips.</h2><p>Search, filter, and find the right book for right now.</p></div><div class="catalog-count"><b id="resultCount">0</b><span>TITLES</span></div></div>
+      <div class="catalog-controls"><div class="catalog-search"><span>⌕</span><input id="catalogSearch" type="search" placeholder="Title, author, topic, or keyword…" autocomplete="off"><button id="clearSearch" aria-label="Clear search">×</button></div><label class="filter-select"><span>AVAILABILITY</span><select id="availabilityFilter"><option value="all">Any status</option><option value="available">Available now</option><option value="unavailable">Currently borrowed</option></select></label><label class="filter-select"><span>SORT BY</span><select id="sortSelect"><option value="featured">Curated selection</option><option value="title">Title A–Z</option><option value="year">Newest edition</option><option value="popular">Most loved</option></select></label></div>
+      <div class="category-pills" id="categoryPills"></div><div class="catalog-grid" id="catalogGrid"></div><div class="no-results hidden" id="noResults"><span>✳</span><h3>No books found just yet.</h3><p>Try a different search or choose another shelf.</p><button class="under-link" id="resetFilters">Reset your filters →</button></div>
+    </div></section>
+
+    <section class="membership-section" id="membership"><div class="membership-art"><div class="membership-glyph">M.</div><span>YOUR LIBRARY, A LITTLE CLOSER</span></div><div class="membership-copy"><div class="eyebrow"><i></i> A CARD THAT OPENS DOORS</div><h2>Make room for<br><em>more wonder.</em></h2><p>Save a reading list, keep track of your loans, and make the library feel like your own. Membership options are designed for curious readers at every stage.</p><button class="button dark-button" id="membershipButton">Discover membership <span>↗</span></button><small>Memberships shown here are a prototype preview.</small></div></section>
+  </main>
+
+  <footer class="site-footer"><div class="footer-brand"><span class="brand-symbol">M<span>✳</span></span><span class="brand-name">MERIDIAN<small>LIBRARY & READING ROOM</small></span></div><p>For every question, a shelf of possibilities.<br>Come as you are. Leave with a new idea.</p><div class="footer-meta"><span>© 2026 MERIDIAN LIBRARY</span><span>A STUDENT PROJECT PREVIEW</span></div></footer>
+
+  <button class="concierge-fab" id="conciergeFab" aria-label="Open book concierge"><span>✳</span><small>BOOK CONCIERGE</small></button>
+  <aside class="concierge" id="concierge" aria-label="Meridian book concierge" aria-hidden="true"><div class="concierge-head"><div class="concierge-avatar">✳</div><div><b>The Meridian Concierge</b><small><i></i> HERE TO HELP YOU DISCOVER</small></div><button id="closeConcierge" aria-label="Close concierge">×</button></div><div class="concierge-welcome"><span>GOOD DAY, READER</span><h3>What are you<br><em>in the mood for?</em></h3><p>Ask about a title, find a book by subject, or tell me what you love to read.</p></div><div class="chat-quick-prompts"><button data-prompt="Is Dune available?">Is Dune available?</button><button data-prompt="Give me a short summary of The Hobbit">Summarize a book</button><button data-prompt="I want a thoughtful science book">Suggest something</button></div><div class="chat-messages" id="chatMessages" aria-live="polite"></div><form class="chat-form" id="chatForm"><input id="chatInput" placeholder="Ask about a book or subject…" autocomplete="off" aria-label="Ask the book concierge"><button aria-label="Send message">↑</button></form><div class="chat-disclaimer">Concierge responses use this demo catalog; no external AI service is connected.</div></aside>
+
+  <dialog id="bookDialog" class="book-dialog"><button class="dialog-close" id="closeBookDialog" aria-label="Close details">×</button><div id="bookDetail"></div></dialog>
+  <dialog id="infoDialog" class="info-dialog"><button class="dialog-close" id="closeInfoDialog" aria-label="Close">×</button><div id="infoContent"></div></dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

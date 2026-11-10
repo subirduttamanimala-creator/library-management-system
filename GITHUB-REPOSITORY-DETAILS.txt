@@ -1,0 +1,22 @@
+GITHUB REPOSITORY DETAILS
+=========================
+
+Repository name
+library-management-system
+
+Description (paste into the GitHub About / Description field)
+A refined, responsive library discovery portal with a categorized catalog, book availability, summaries, and a built-in reading concierge.
+
+Suggested topics
+library-management, digital-library, book-catalog, book-discovery, chatbot, html, css, javascript
+
+Upload these files to the repository root
+index.html
+styles.css
+catalog.js
+app.js
+README.md
+LICENSE
+
+Optional VS Code setup
+Include .vscode/extensions.json to recommend Live Server.
