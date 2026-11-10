@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f6fb">
+  <meta name="description" content="Stacks — a friendly library circulation and collection management prototype.">
+  <title>Stacks — Library Management System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#dashboard" aria-label="Stacks home"><span class="brand-mark">▤</span><span><b>Stacks</b><small>LIBRARY MANAGEMENT</small></span></a>
+      <div class="side-label">WORKSPACE</div>
+      <nav class="nav-group" aria-label="Main navigation">
+        <button class="nav-item active" data-page="dashboard"><span>▦</span> Overview</button>
+        <button class="nav-item" data-page="catalog"><span>▤</span> Book catalog <i id="bookCount">0</i></button>
+        <button class="nav-item" data-page="loans"><span>▣</span> Active loans <i class="amber" id="loanCount">0</i></button>
+        <button class="nav-item" data-page="search"><span>⌕</span> Find a book</button>
+      </nav>
+      <div class="side-label">CIRCULATION DESK</div>
+      <nav class="nav-group" aria-label="Circulation actions">
+        <button class="nav-item" data-action="issue"><span>↗</span> Check out a book</button>
+        <button class="nav-item" data-action="return"><span>↙</span> Check in a book</button>
+        <button class="nav-item" data-action="add"><span>＋</span> Add to catalog</button>
+      </nav>
+      <div class="side-bottom"><div class="online"><span></span> Local workspace <b>Ready</b></div><p>Prototype data stays in this browser.</p></div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <button class="menu-button" id="menuButton" aria-label="Toggle navigation">☰</button>
+        <label class="global-search"><span>⌕</span><input id="globalSearch" placeholder="Search books, authors, student ID…" autocomplete="off"><kbd>⌘ K</kbd></label>
+        <div class="top-actions"><button class="button quiet" id="refreshButton">↻ <span>Refresh</span></button><button class="button primary" data-action="add">＋ Add book</button><button class="avatar" title="Staff profile">AD</button></div>
+      </header>
+
+      <div class="content-wrap">
+        <section class="page active" id="page-dashboard">
+          <div class="welcome-row"><div><div class="eyebrow" id="greetingDate">STAFF WORKSPACE</div><h1><span id="greetingText">Welcome, Alex</span> <span class="wave">✦</span></h1><p class="muted">Here’s what’s happening across your library today.</p></div><button class="button outline" id="exportButton">↓ Export inventory</button></div>
+          <div class="hero-banner"><div><span class="hero-tag"><span class="pulse"></span> CIRCULATION DESK</span><h2>A little order.<br><em>A lot of discovery.</em></h2><p>Keep your shelves moving and your readers finding their next favorite.</p><button class="button hero-button" data-page="catalog">Explore collection <span>↗</span></button></div><div class="hero-art" aria-hidden="true"><div class="sun"></div><div class="shelf shelf-one"><i></i><i></i><i></i><i></i></div><div class="shelf shelf-two"><i></i><i></i><i></i><i></i><i></i></div><div class="plant">♧</div><div class="art-caption">A PLACE FOR<br>EVERY STORY</div></div><div class="hero-stat"><b id="heroAvailable">0</b><span>copies ready<br>to find a reader</span></div></div>
+          <div class="metric-grid">
+            <article class="metric-card"><div class="metric-top"><span class="metric-icon lilac">▤</span><span class="metric-note">COLLECTION</span></div><strong id="totalTitles">0</strong><div class="metric-caption">Book titles</div><div class="metric-foot">Across your library catalog</div></article>
+            <article class="metric-card"><div class="metric-top"><span class="metric-icon blue">▣</span><span class="metric-note">ON THE SHELF</span></div><strong id="availableCopies">0</strong><div class="metric-caption">Copies available</div><div class="metric-foot"><span class="green-dot"></span> Ready to check out</div></article>
+            <article class="metric-card"><div class="metric-top"><span class="metric-icon orange">↗</span><span class="metric-note">CIRCULATION</span></div><strong id="activeLoans">0</strong><div class="metric-caption">Currently checked out</div><div class="metric-foot">Books with readers now</div></article>
+            <article class="metric-card"><div class="metric-top"><span class="metric-icon mint">!</span><span class="metric-note">NEEDS A LOOK</span></div><strong id="attentionCount">0</strong><div class="metric-caption">Overdue returns</div><div class="metric-foot">Follow up with a reader</div></article>
+          </div>
+          <div class="dashboard-grid">
+            <section class="panel inventory-panel"><div class="panel-head"><div><div class="eyebrow">YOUR COLLECTION</div><h3>Inventory at a glance</h3><p class="muted">A quick read on your shelves.</p></div><button class="text-button" data-page="catalog">View catalog <span>→</span></button></div><div class="inventory-health"><div class="health-ring"><b id="healthPercent">100%</b><small>IN STOCK</small></div><div class="health-copy"><b id="healthTitle">Looking good</b><p id="healthMessage">Your shelves are ready for readers.</p><div class="progress"><span id="healthBar"></span></div></div></div><div class="quick-actions"><button data-action="add"><span class="quick-icon lilac">＋</span><span><b>Add a title</b><small>Grow the catalog</small></span><i>↗</i></button><button data-action="issue"><span class="quick-icon blue">↗</span><span><b>Check out</b><small>Start a new loan</small></span><i>↗</i></button><button data-action="return"><span class="quick-icon mint">↙</span><span><b>Check in</b><small>Record a return</small></span><i>↗</i></button></div></section>
+            <section class="panel activity-panel"><div class="panel-head"><div><div class="eyebrow">THE LATEST</div><h3>Circulation activity</h3></div><span class="live-pill"><i></i> LIVE</span></div><div class="activity-list" id="activityList"></div></section>
+          </div>
+          <section class="panel popular-panel"><div class="panel-head"><div><div class="eyebrow">QUICK ACCESS</div><h3>Frequently handled titles</h3></div><button class="text-button" data-page="catalog">All titles →</button></div><div class="mini-books" id="miniBooks"></div></section>
+          <footer class="footer"><span>STACKS · LIBRARY MANAGEMENT</span><span>Prototype workspace · Your browser stores demo data</span></footer>
+        </section>
+
+        <section class="page" id="page-catalog"><div class="page-heading"><div><div class="eyebrow">COLLECTION MANAGEMENT</div><h1>Book catalog</h1><p class="muted">Every title, every copy, all in one place.</p></div><button class="button primary" data-action="add">＋ Add book</button></div><section class="panel table-panel"><div class="table-toolbar"><div><h3>All books <span class="count-badge" id="catalogCount">0</span></h3><p class="muted">Search and manage the collection.</p></div><div class="toolbar-tools"><select id="categoryFilter" aria-label="Filter by category"><option value="all">All categories</option></select><select id="stockFilter" aria-label="Filter by availability"><option value="all">All stock</option><option value="available">Available</option><option value="out">Out of stock</option></select></div></div><div class="table-scroll"><table><thead><tr><th>BOOK ID</th><th>TITLE</th><th>AUTHOR</th><th>CATEGORY</th><th>YEAR</th><th>AVAILABLE</th><th>STATUS</th><th></th></tr></thead><tbody id="catalogRows"></tbody></table></div><div class="empty-state hidden" id="emptyCatalog">No books match your search. Try changing a filter or add a title.</div></section><footer class="footer"><span>STACKS · COLLECTION</span><span id="catalogFoot">0 titles in your collection</span></footer></section>
+
+        <section class="page" id="page-loans"><div class="page-heading"><div><div class="eyebrow">CIRCULATION RECORDS</div><h1>Active loans</h1><p class="muted">Books currently checked out to readers.</p></div><button class="button primary" data-action="issue">↗ Check out book</button></div><section class="panel table-panel"><div class="table-toolbar"><div><h3>Open transactions <span class="count-badge" id="loansTableCount">0</span></h3><p class="muted">Loan records awaiting return.</p></div><div class="toolbar-tools"><select id="loanStatusFilter" aria-label="Filter loan status"><option value="all">All loans</option><option value="overdue">Overdue</option><option value="due">Due soon</option></select></div></div><div class="table-scroll"><table><thead><tr><th>TX ID</th><th>BOOK TITLE</th><th>READER</th><th>READER ID</th><th>CHECKOUT</th><th>DUE DATE</th><th>STATUS</th><th>ACTION</th></tr></thead><tbody id="loanRows"></tbody></table></div><div class="empty-state hidden" id="emptyLoans">No active loans yet. Check out a book to create a circulation record.</div></section><footer class="footer"><span>STACKS · CIRCULATION</span><span>Loan duration: 14 days · Renewals: one per loan</span></footer></section>
+
+        <section class="page" id="page-search"><div class="page-heading"><div><div class="eyebrow">READER SERVICES</div><h1>Find a book</h1><p class="muted">Search by title, author, subject, or book ID.</p></div></div><section class="search-hero panel"><span>⌕</span><input id="catalogSearch" placeholder="Try “data structures” or an author name…" autocomplete="off"><button class="button primary" id="clearSearch">Clear</button></section><div class="search-chips"><button data-query="engineering">Engineering</button><button data-query="fiction">Fiction</button><button data-query="data">Data & computing</button><button data-query="study">Study guides</button></div><div class="results-heading"><h3>Search results</h3><span id="searchResultCount">0 titles</span></div><div class="search-results" id="searchResults"></div><div class="empty-state hidden" id="emptySearch">No titles found yet. Try another search term.</div></section>
+      </div>
+    </main>
+  </div>
+
+  <dialog id="bookDialog"><form id="bookForm" method="dialog"><div class="dialog-head"><div><div class="eyebrow">COLLECTION MANAGEMENT</div><h2>Add a book</h2></div><button class="close-button" type="button" data-close="bookDialog">×</button></div><p class="muted">Add a title and its physical copies to the catalog.</p><div class="form-grid"><label>Book title<input name="title" required maxlength="90" placeholder="e.g. Clean Code"></label><label>Author<input name="author" required maxlength="70" placeholder="Author name"></label><label>Category<select name="category" required><option>Computer Science</option><option>Engineering</option><option>Study & Exam Prep</option><option>Fiction</option><option>Science & Ideas</option><option>Literature</option></select></label><label>Publication year<input name="year" type="number" min="1450" max="2100" value="2025" required></label><label>Copies<input name="copies" type="number" min="1" max="500" value="1" required></label><label>Book ID<input name="id" maxlength="12" placeholder="Auto-generated if empty"></label></div><div class="dialog-actions"><button class="button quiet" type="button" data-close="bookDialog">Cancel</button><button class="button primary" type="submit">Add to catalog</button></div></form></dialog>
+  <dialog id="issueDialog"><form id="issueForm" method="dialog"><div class="dialog-head"><div><div class="eyebrow">CIRCULATION DESK</div><h2>Check out a book</h2></div><button class="close-button" type="button" data-close="issueDialog">×</button></div><p class="muted">Create a loan record for a reader.</p><div class="form-grid"><label class="span-two">Book<select name="bookId" id="issueBookSelect" required></select></label><label>Reader name<input name="reader" required maxlength="70" placeholder="Full name"></label><label>Reader ID<input name="readerId" required maxlength="20" placeholder="e.g. STU-1042"></label><label>Checkout date<input name="checkout" type="date" required></label><label>Loan period<select name="days"><option value="14">14 days</option><option value="7">7 days</option><option value="21">21 days</option><option value="28">28 days</option></select></label></div><div class="dialog-actions"><button class="button quiet" type="button" data-close="issueDialog">Cancel</button><button class="button primary" type="submit">Confirm checkout</button></div></form></dialog>
+  <dialog id="returnDialog"><form id="returnForm" method="dialog"><div class="dialog-head"><div><div class="eyebrow">CIRCULATION DESK</div><h2>Check in a book</h2></div><button class="close-button" type="button" data-close="returnDialog">×</button></div><p class="muted">Select a current loan to record its return.</p><label class="full-label">Active loan<select name="loanId" id="returnLoanSelect" required></select></label><div class="dialog-actions"><button class="button quiet" type="button" data-close="returnDialog">Cancel</button><button class="button primary" type="submit">Record return</button></div></form></dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

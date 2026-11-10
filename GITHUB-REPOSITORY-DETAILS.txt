@@ -1,0 +1,23 @@
+GITHUB REPOSITORY SETUP
+=======================
+
+Repository name
+library-management-system
+
+Repository description (paste into the GitHub About / Description field)
+A responsive library management system for catalog management, inventory, and book circulation.
+
+Suggested topics
+library-management, circulation, catalog, dashboard, html, css, javascript
+
+Files to add at the repository root
+index.html
+style.css
+app.js
+README.md
+LICENSE
+
+Also include the .vscode folder and its extensions.json file if you want VS Code to recommend Live Server.
+
+Website preview
+Open index.html with VS Code Live Server. No build or package installation is required.
